@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" type="image.png" href="image.png"
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RP Soluções | Limpe seu Nome</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0b1625;
+color:white;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+width:100%;
+top:0;
+left:0;
+padding:18px 40px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:rgba(0,0,0,0.5);
+backdrop-filter: blur(8px);
+z-index:999;
+}
+
+.logo{
+width:60px;
+height:60px;
+border-radius:50%;
+overflow:hidden;
+}
+
+.logo img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-size:14px;
+}
+
+/* HERO FULL */
+
+.hero{
+height:100vh;
+background:url('AS00106-Ponte-Estaiada.bg.jpg') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(rgba(5,10,20,0.7),rgba(5,10,20,0.9));
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+text-align:center;
+max-width:900px;
+padding:20px;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.gold{
+color:#d4af37;
+}
+
+.hero p{
+font-size:18px;
+margin-bottom:30px;
+}
+
+.cta-box{
+background:rgba(11,22,37,0.85);
+padding:25px;
+border-radius:14px;
+border:1px solid rgba(212,175,55,0.3);
+display:inline-block;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+padding:14px 18px;
+border:none;
+border-radius:8px;
+font-weight:600;
+cursor:pointer;
+flex:1;
+min-width:180px;
+}
+
+.btn-primary{
+background:linear-gradient(45deg,#d4af37,#f1d77a);
+color:#0b1625;
+}
+
+.btn-secondary{
+background:white;
+color:#0b1625;
+}
+
+/* BENEFITS */
+
+.benefits{
+padding:80px 20px;
+background:#09101c;
+text-align:center;
+}
+
+.benefits h2{
+margin-bottom:40px;
+font-size:32px;
+}
+
+.benefits-container{
+max-width:1100px;
+margin:auto;
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+}
+
+.card{
+background:#0f1c2e;
+padding:25px;
+border-radius:12px;
+width:230px;
+border:1px solid rgba(212,175,55,0.2);
+}
+
+.card h4{
+color:#d4af37;
+margin-bottom:10px;
+}
+
+/* SOBRE */
+
+.sobre{
+padding:80px 20px;
+max-width:1000px;
+margin:auto;
+text-align:center;
+}
+
+.sobre h2{
+font-size:34px;
+margin-bottom:20px;
+}
+
+.sobre p{
+opacity:.9;
+line-height:1.6;
+}
+
+/* DEPOIMENTOS */
+
+.depoimentos{
+padding:80px 20px;
+background:#09101c;
+text-align:center;
+}
+
+.depoimentos h2{
+font-size:32px;
+margin-bottom:40px;
+}
+
+.depoimentos-container{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+max-width:1100px;
+margin:auto;
+justify-content:center;
+}
+
+.depoimento{
+background:#0f1c2e;
+padding:25px;
+border-radius:12px;
+width:300px;
+border:1px solid rgba(212,175,55,0.2);
+text-align:left;
+}
+
+.depoimento strong{
+color:#d4af37;
+}
+
+/* CTA FINAL AZUL */
+
+.cta-final{
+padding:50px 20px;
+background:#0b1625;
+text-align:center;
+}
+
+.cta-box-final{
+background:#09101c;
+display:inline-block;
+padding:30px;
+border-radius:14px;
+border:1px solid rgba(212,175,55,0.25);
+}
+
+.cta-final h2{
+margin-bottom:20px;
+}
+
+.footer{
+text-align:center;
+padding:25px;
+background:#09101c;
+}
+
+@media(max-width:900px){
+.hero h1{font-size:32px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<img src="image.png">
+</div>
+
+<nav>
+<a href="#inicio">Início</a>
+<a href="#sobre">Sobre</a>
+<a href="#depoimentos">Depoimentos</a>
+</nav>
+</header>
+
+<section class="hero" id="inicio">
+<div class="hero-content">
+
+<h1>
+Limpe seu nome <span class="gold">AGORA</span>
+</h1>
+
+<p>
+Regularize sua situação e volte a ter crédito no mercado com a RP Soluções
+</p>
+
+<div class="cta-box">
+<h3>Converse com a gente</h3>
+<div class="buttons">
+<button class="btn btn-primary" onclick="romulo()">Falar com Rômulo</button>
+<button class="btn btn-secondary" onclick="pedro()">Falar com Pedro</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="benefits">
+<h2>Removemos apontamentos em</h2>
+<div class="benefits-container">
+
+<div class="card">
+<h4>SERASA</h4>
+<p>Remoção completa</p>
+</div>
+
+<div class="card">
+<h4>SPC</h4>
+<p>Regularização rápida</p>
+</div>
+
+<div class="card">
+<h4>BOA VISTA</h4>
+<p>Limpeza do nome</p>
+</div>
+
+<div class="card">
+<h4>PROTESTO</h4>
+<p>Cartório e dívidas</p>
+</div>
+
+</div>
+</section>
+
+<section class="sobre" id="sobre">
+<h2>Sobre a RP Soluções</h2>
+<p>
+A RP Soluções é especializada na regularização de CPF e remoção de apontamentos negativos. Trabalhamos com análise personalizada para cada cliente, buscando a melhor estratégia para limpar seu nome e devolver seu acesso ao crédito.
+<br><br>
+Nosso objetivo é ajudar pessoas que estão com dificuldades financeiras a recuperarem sua credibilidade no mercado com segurança, agilidade e transparência.
+</p>
+</section>
+
+<section class="depoimentos" id="depoimentos">
+<h2>O que nossos clientes dizem</h2>
+
+<div class="depoimentos-container">
+
+<div class="depoimento">
+<p>
+Consegui limpar meu nome em poucos dias. Atendimento rápido e muito atencioso. Recomendo demais.
+</p>
+<br>
+<strong>Marcos Silva — São Paulo</strong>
+</div>
+
+<div class="depoimento">
+<p>
+Estava com restrição no Serasa e SPC. A RP Soluções me ajudou e hoje já consegui meu crédito novamente.
+</p>
+<br>
+<strong>Ana Paula — Guarulhos</strong>
+</div>
+
+<div class="depoimento">
+<p>
+Excelente atendimento. Me explicaram tudo e acompanharam até meu nome ficar limpo.
+</p>
+<br>
+<strong>Ricardo Mendes — Osasco</strong>
+</div>
+
+</div>
+</section>
+
+<section class="cta-final">
+
+<div class="cta-box-final">
+<h2>Limpe seu nome hoje mesmo</h2>
+
+<div class="buttons" style="margin-top:15px;">
+<button class="btn btn-primary" onclick="romulo()">Falar com Rômulo</button>
+<button class="btn btn-secondary" onclick="pedro()">Falar com Pedro</button>
+</div>
+
+</div>
+
+</section>
+
+<div class="footer">
+© RP Soluções - Todos os direitos reservados
+</div>
+
+<script>
+function romulo(){
+window.open("https://wa.me/5511956613948?text=Olá vim pelo site da RP Soluções e quero limpar meu nome")
+}
+
+function pedro(){
+window.open("https://wa.me/5511994116238?text=Olá vim pelo site da RP Soluções e quero limpar meu nome")
+}
+</script>
+
+</body>
+</html>
