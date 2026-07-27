@@ -1,391 +1,578 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="icon" type="image.png" href="image.png"
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RP Soluções | Limpe seu Nome</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image.png" href="image.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RP Soluções | Limpe seu Nome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+        body {
+            background: #0b1625;
+            color: white;
+        }
 
-body{
-background:#0b1625;
-color:white;
-}
+        /* HEADER */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+        }
 
-/* HEADER */
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
 
-header{
-position:fixed;
-width:100%;
-top:0;
-left:0;
-padding:18px 40px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-background:rgba(0,0,0,0.5);
-backdrop-filter: blur(8px);
-z-index:999;
-}
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.logo{
-width:60px;
-height:60px;
-border-radius:50%;
-overflow:hidden;
-}
+        /* Navegação Desktop */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
 
-.logo img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-size:14px;
-}
+        .nav-links a:hover {
+            color: #d4af37;
+        }
 
-/* HERO FULL */
+        /* Menu Hamburguer - Visível apenas em mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 5px;
+        }
 
-.hero{
-height:100vh;
-background:url('AS00106-Ponte-Estaiada.bg.jpg') center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
 
-.hero::after{
-content:'';
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(rgba(5,10,20,0.7),rgba(5,10,20,0.9));
-}
+        /* Animação do hamburger para "X" */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
 
-.hero-content{
-position:relative;
-z-index:2;
-text-align:center;
-max-width:900px;
-padding:20px;
-}
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
 
-.hero h1{
-font-size:48px;
-margin-bottom:20px;
-}
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
 
-.gold{
-color:#d4af37;
-}
+        /* HERO FULL */
+        .hero {
+            height: 100vh;
+            background: url('AS00106-Ponte-Estaiada.bg.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-.hero p{
-font-size:18px;
-margin-bottom:30px;
-}
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(5, 10, 20, 0.7), rgba(5, 10, 20, 0.9));
+        }
 
-.cta-box{
-background:rgba(11,22,37,0.85);
-padding:25px;
-border-radius:14px;
-border:1px solid rgba(212,175,55,0.3);
-display:inline-block;
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 20px;
+        }
 
-.buttons{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
-}
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
 
-.btn{
-padding:14px 18px;
-border:none;
-border-radius:8px;
-font-weight:600;
-cursor:pointer;
-flex:1;
-min-width:180px;
-}
+        .gold {
+            color: #d4af37;
+        }
 
-.btn-primary{
-background:linear-gradient(45deg,#d4af37,#f1d77a);
-color:#0b1625;
-}
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
 
-.btn-secondary{
-background:white;
-color:#0b1625;
-}
+        .cta-box {
+            background: rgba(11, 22, 37, 0.85);
+            padding: 25px;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: inline-block;
+        }
 
-/* BENEFITS */
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.benefits{
-padding:80px 20px;
-background:#09101c;
-text-align:center;
-}
+        .btn {
+            padding: 14px 18px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            min-width: 180px;
+        }
 
-.benefits h2{
-margin-bottom:40px;
-font-size:32px;
-}
+        .btn-primary {
+            background: linear-gradient(45deg, #d4af37, #f1d77a);
+            color: #0b1625;
+        }
 
-.benefits-container{
-max-width:1100px;
-margin:auto;
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
-}
+        .btn-secondary {
+            background: white;
+            color: #0b1625;
+        }
 
-.card{
-background:#0f1c2e;
-padding:25px;
-border-radius:12px;
-width:230px;
-border:1px solid rgba(212,175,55,0.2);
-}
+        /* BENEFITS */
+        .benefits {
+            padding: 80px 20px;
+            background: #09101c;
+            text-align: center;
+        }
 
-.card h4{
-color:#d4af37;
-margin-bottom:10px;
-}
+        .benefits h2 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
 
-/* SOBRE */
+        .benefits-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
 
-.sobre{
-padding:80px 20px;
-max-width:1000px;
-margin:auto;
-text-align:center;
-}
+        .card {
+            background: #0f1c2e;
+            padding: 25px;
+            border-radius: 12px;
+            width: 230px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
 
-.sobre h2{
-font-size:34px;
-margin-bottom:20px;
-}
+        .card h4 {
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
 
-.sobre p{
-opacity:.9;
-line-height:1.6;
-}
+        /* SOBRE */
+        .sobre {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
 
-/* DEPOIMENTOS */
+        .sobre h2 {
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
 
-.depoimentos{
-padding:80px 20px;
-background:#09101c;
-text-align:center;
-}
+        .sobre p {
+            opacity: .9;
+            line-height: 1.6;
+        }
 
-.depoimentos h2{
-font-size:32px;
-margin-bottom:40px;
-}
+        /* DEPOIMENTOS */
+        .depoimentos {
+            padding: 80px 20px;
+            background: #09101c;
+            text-align: center;
+        }
 
-.depoimentos-container{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-max-width:1100px;
-margin:auto;
-justify-content:center;
-}
+        .depoimentos h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
 
-.depoimento{
-background:#0f1c2e;
-padding:25px;
-border-radius:12px;
-width:300px;
-border:1px solid rgba(212,175,55,0.2);
-text-align:left;
-}
+        .depoimentos-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+            justify-content: center;
+        }
 
-.depoimento strong{
-color:#d4af37;
-}
+        .depoimento {
+            background: #0f1c2e;
+            padding: 25px;
+            border-radius: 12px;
+            width: 300px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: left;
+        }
 
-/* CTA FINAL AZUL */
+        .depoimento strong {
+            color: #d4af37;
+        }
 
-.cta-final{
-padding:50px 20px;
-background:#0b1625;
-text-align:center;
-}
+        /* CTA FINAL AZUL */
+        .cta-final {
+            padding: 50px 20px;
+            background: #0b1625;
+            text-align: center;
+        }
 
-.cta-box-final{
-background:#09101c;
-display:inline-block;
-padding:30px;
-border-radius:14px;
-border:1px solid rgba(212,175,55,0.25);
-}
+        .cta-box-final {
+            background: #09101c;
+            display: inline-block;
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
 
-.cta-final h2{
-margin-bottom:20px;
-}
+        .cta-final h2 {
+            margin-bottom: 20px;
+        }
 
-.footer{
-text-align:center;
-padding:25px;
-background:#09101c;
-}
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background: #09101c;
+        }
 
-@media(max-width:900px){
-.hero h1{font-size:32px;}
-}
+        /* ========== RESPONSIVIDADE ========== */
+        @media(max-width: 900px) {
+            .hero h1 {
+                font-size: 32px;
+            }
 
-</style>
+            header {
+                padding: 15px 20px;
+            }
+
+            /* Mostra o hamburger em mobile */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Menu mobile - oculto por padrão */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                transform: translateX(100%);
+                transition: transform 0.4s ease-in-out;
+                padding: 20px;
+            }
+
+            /* Menu aberto */
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .nav-links a {
+                font-size: 22px;
+                font-weight: 500;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 8px;
+                transition: background 0.3s;
+            }
+
+            .nav-links a:hover {
+                background: rgba(212, 175, 55, 0.15);
+                color: #d4af37;
+            }
+
+            /* Ajuste do botão hamburger para ficar acima do menu */
+            .hamburger {
+                position: relative;
+                z-index: 1000;
+            }
+
+            /* Evita rolagem quando menu está aberto */
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            /* Ajustes menores para telas muito pequenas */
+            .buttons .btn {
+                min-width: 140px;
+                font-size: 14px;
+                padding: 12px 16px;
+            }
+
+            .cta-box {
+                padding: 20px;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .cta-box-final {
+                padding: 20px;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .depoimento {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .btn {
+                min-width: 120px;
+                font-size: 13px;
+                padding: 10px 14px;
+            }
+
+            .benefits h2,
+            .depoimentos h2,
+            .sobre h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-<div class="logo">
-<img src="image.png">
-</div>
+    <header>
+        <div class="logo">
+            <img src="image.png" alt="RP Soluções Logo">
+        </div>
 
-<nav>
-<a href="#inicio">Início</a>
-<a href="#sobre">Sobre</a>
-<a href="#depoimentos">Depoimentos</a>
-</nav>
-</header>
+        <!-- Menu Hamburguer -->
+        <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-<section class="hero" id="inicio">
-<div class="hero-content">
+        <!-- Links de navegação -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#inicio" onclick="closeMenu()">Início</a></li>
+            <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+            <li><a href="#depoimentos" onclick="closeMenu()">Depoimentos</a></li>
+        </ul>
+    </header>
 
-<h1>
-Limpe seu nome <span class="gold">AGORA</span>
-</h1>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>
+                Limpe seu nome <span class="gold">AGORA</span>
+            </h1>
+            <p>
+                Regularize sua situação e volte a ter crédito no mercado com a RP Soluções
+            </p>
+            <div class="cta-box">
+                <h3>Converse com a gente</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" onclick="romulo()">Falar com Rômulo</button>
+                    <button class="btn btn-secondary" onclick="pedro()">Falar com Pedro</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<p>
-Regularize sua situação e volte a ter crédito no mercado com a RP Soluções
-</p>
+    <section class="benefits">
+        <h2>Removemos apontamentos em</h2>
+        <div class="benefits-container">
+            <div class="card">
+                <h4>SERASA</h4>
+                <p>Remoção completa</p>
+            </div>
+            <div class="card">
+                <h4>SPC</h4>
+                <p>Regularização rápida</p>
+            </div>
+            <div class="card">
+                <h4>BOA VISTA</h4>
+                <p>Limpeza do nome</p>
+            </div>
+            <div class="card">
+                <h4>PROTESTO</h4>
+                <p>Cartório e dívidas</p>
+            </div>
+        </div>
+    </section>
 
-<div class="cta-box">
-<h3>Converse com a gente</h3>
-<div class="buttons">
-<button class="btn btn-primary" onclick="romulo()">Falar com Rômulo</button>
-<button class="btn btn-secondary" onclick="pedro()">Falar com Pedro</button>
-</div>
-</div>
+    <section class="sobre" id="sobre">
+        <h2>Sobre a RP Soluções</h2>
+        <p>
+            A RP Soluções é especializada na regularização de CPF e remoção de apontamentos negativos. Trabalhamos com análise personalizada para cada cliente, buscando a melhor estratégia para limpar seu nome e devolver seu acesso ao crédito.
+            <br><br>
+            Nosso objetivo é ajudar pessoas que estão com dificuldades financeiras a recuperarem sua credibilidade no mercado com segurança, agilidade e transparência.
+        </p>
+    </section>
 
-</div>
-</section>
+    <section class="depoimentos" id="depoimentos">
+        <h2>O que nossos clientes dizem</h2>
+        <div class="depoimentos-container">
+            <div class="depoimento">
+                <p>
+                    Consegui limpar meu nome em poucos dias. Atendimento rápido e muito atencioso. Recomendo demais.
+                </p>
+                <br>
+                <strong>Marcos Silva — São Paulo</strong>
+            </div>
+            <div class="depoimento">
+                <p>
+                    Estava com restrição no Serasa e SPC. A RP Soluções me ajudou e hoje já consegui meu crédito novamente.
+                </p>
+                <br>
+                <strong>Ana Paula — Guarulhos</strong>
+            </div>
+            <div class="depoimento">
+                <p>
+                    Excelente atendimento. Me explicaram tudo e acompanharam até meu nome ficar limpo.
+                </p>
+                <br>
+                <strong>Ricardo Mendes — Osasco</strong>
+            </div>
+        </div>
+    </section>
 
-<section class="benefits">
-<h2>Removemos apontamentos em</h2>
-<div class="benefits-container">
+    <section class="cta-final">
+        <div class="cta-box-final">
+            <h2>Limpe seu nome hoje mesmo</h2>
+            <div class="buttons" style="margin-top:15px;">
+                <button class="btn btn-primary" onclick="romulo()">Falar com Rômulo</button>
+                <button class="btn btn-secondary" onclick="pedro()">Falar com Pedro</button>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<h4>SERASA</h4>
-<p>Remoção completa</p>
-</div>
+    <div class="footer">
+        © RP Soluções - Todos os direitos reservados
+    </div>
 
-<div class="card">
-<h4>SPC</h4>
-<p>Regularização rápida</p>
-</div>
+    <script>
+        // Funções dos botões WhatsApp
+        function romulo() {
+            window.open("https://wa.me/5511956613948?text=Olá vim pelo site da RP Soluções e quero limpar meu nome");
+        }
 
-<div class="card">
-<h4>BOA VISTA</h4>
-<p>Limpeza do nome</p>
-</div>
+        function pedro() {
+            window.open("https://wa.me/5511994116238?text=Olá vim pelo site da RP Soluções e quero limpar meu nome");
+        }
 
-<div class="card">
-<h4>PROTESTO</h4>
-<p>Cartório e dívidas</p>
-</div>
+        // ====== CONTROLE DO MENU MOBILE ======
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const body = document.body;
 
-</div>
-</section>
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        }
 
-<section class="sobre" id="sobre">
-<h2>Sobre a RP Soluções</h2>
-<p>
-A RP Soluções é especializada na regularização de CPF e remoção de apontamentos negativos. Trabalhamos com análise personalizada para cada cliente, buscando a melhor estratégia para limpar seu nome e devolver seu acesso ao crédito.
-<br><br>
-Nosso objetivo é ajudar pessoas que estão com dificuldades financeiras a recuperarem sua credibilidade no mercado com segurança, agilidade e transparência.
-</p>
-</section>
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
 
-<section class="depoimentos" id="depoimentos">
-<h2>O que nossos clientes dizem</h2>
+        // Evento de clique no hamburger
+        hamburger.addEventListener('click', toggleMenu);
 
-<div class="depoimentos-container">
+        // Fecha o menu ao clicar em um link (já chamamos via onclick nos <a>)
+        // A função closeMenu já é chamada nos links
 
-<div class="depoimento">
-<p>
-Consegui limpar meu nome em poucos dias. Atendimento rápido e muito atencioso. Recomendo demais.
-</p>
-<br>
-<strong>Marcos Silva — São Paulo</strong>
-</div>
+        // Fecha o menu ao pressionar ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
 
-<div class="depoimento">
-<p>
-Estava com restrição no Serasa e SPC. A RP Soluções me ajudou e hoje já consegui meu crédito novamente.
-</p>
-<br>
-<strong>Ana Paula — Guarulhos</strong>
-</div>
+        // Fecha o menu ao clicar fora dele (em telas mobile)
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 900) {
+                const isClickInsideMenu = navLinks.contains(e.target);
+                const isClickOnHamburger = hamburger.contains(e.target);
+                if (!isClickInsideMenu && !isClickOnHamburger && navLinks.classList.contains('active')) {
+                    closeMenu();
+                }
+            }
+        });
 
-<div class="depoimento">
-<p>
-Excelente atendimento. Me explicaram tudo e acompanharam até meu nome ficar limpo.
-</p>
-<br>
-<strong>Ricardo Mendes — Osasco</strong>
-</div>
-
-</div>
-</section>
-
-<section class="cta-final">
-
-<div class="cta-box-final">
-<h2>Limpe seu nome hoje mesmo</h2>
-
-<div class="buttons" style="margin-top:15px;">
-<button class="btn btn-primary" onclick="romulo()">Falar com Rômulo</button>
-<button class="btn btn-secondary" onclick="pedro()">Falar com Pedro</button>
-</div>
-
-</div>
-
-</section>
-
-<div class="footer">
-© RP Soluções - Todos os direitos reservados
-</div>
-
-<script>
-function romulo(){
-window.open("https://wa.me/5511956613948?text=Olá vim pelo site da RP Soluções e quero limpar meu nome")
-}
-
-function pedro(){
-window.open("https://wa.me/5511994116238?text=Olá vim pelo site da RP Soluções e quero limpar meu nome")
-}
-</script>
+        // Ajusta o fechamento ao redimensionar para desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    </script>
 
 </body>
 </html>
